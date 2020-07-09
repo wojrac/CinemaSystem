@@ -38,11 +38,11 @@ namespace MoviesReservation.Controllers
            return  _context.Users.ToList();
         }*/
         //GET: api/user/1
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public ActionResult<User> Get(long id)
         {
             return _context.Users.Where(us=>us.UserId == id).FirstOrDefault();
-        }
+        }*/ //git test
         //GET: api/user
        /* [HttpGet("GetUser")]
         public ActionResult<User> GetUser()
