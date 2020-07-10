@@ -33,7 +33,15 @@ export class UserRegisterComponent implements OnInit {
   }
   onSubmit(form:NgForm)
   {
-    
+    console.log("Submit");
+    this.service.registerUser(form.value).subscribe(
+      res => {
+        this.resetForm(form);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

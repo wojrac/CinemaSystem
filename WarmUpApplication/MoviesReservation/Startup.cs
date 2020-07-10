@@ -72,6 +72,7 @@ namespace MoviesReservation
                 };
             }
             );
+            services.AddCors();
         }
 
         private CompatibilityVersion CompatibilityVersion(object version_3_1)
@@ -98,6 +99,10 @@ namespace MoviesReservation
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(options => options.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
         }
     }
 }
