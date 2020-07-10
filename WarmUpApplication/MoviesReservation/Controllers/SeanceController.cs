@@ -47,6 +47,21 @@ namespace MoviesReservation.Controllers
             return seance;
 
         }
+        //GET api/seance/admin/1
+        [HttpGet("admin/{id}")]
+        public ActionResult<Seance> GetWithReservations(long id, [FromHeader] string  Authorization )
+        {
+             var userMail = AuthLogic.ExtractUserEmailFromToken(Authorization);
+            var user = _context.Users.Where(u=>u.Email == userMail).FirstOrDefault();
+            if(!user.IsAdmin) return Unauthorized();
+             var seance = _context.Seances
+            .Include(s=>s.Movie)
+            .Include(s=>s.Seats)
+            .Include(s=>s.Reservations)
+            .Where(s=>s.SeanceId ==id).FirstOrDefault();  //tu jeszcze dojdzie include reservations i include seats
+            if(seance == null) return NotFound();
+            return seance;
+        }
         //POST: api/seance
         [HttpPost]
         public ActionResult<Seance> AddSeance(Seance seance, [FromHeader] string  Authorization)
