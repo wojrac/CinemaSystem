@@ -37,29 +37,22 @@ namespace MoviesReservation.Controllers
         }
         //GET: api/seance/1
         [HttpGet("{id}")]
-        public ActionResult<Seance> Get(long id)
+        public ActionResult<Seance> Get(long id, [FromHeader] string  Authorization)
         {
+            var userMail = AuthLogic.ExtractUserEmailFromToken(Authorization);
+            var user = _context.Users.Where(u=>u.Email == userMail).FirstOrDefault();
+            if(!user.IsAdmin){
+            var seanceUs = _context.Seances
+            .Include(s=>s.Movie)
+            .Include(s=>s.Seats)
+            .Where(s=>s.SeanceId ==id).FirstOrDefault();  //tu jeszcze dojdzie include reservations i include seats
+            return seanceUs;
+            }
             var seance = _context.Seances
             .Include(s=>s.Movie)
             .Include(s=>s.Seats)
-            .Where(s=>s.SeanceId ==id).FirstOrDefault();  //tu jeszcze dojdzie include reservations i include seats
-            if(seance == null) return NotFound();
-            return seance;
-
-        }
-        //GET api/seance/admin/1
-        [HttpGet("admin/{id}")]
-        public ActionResult<Seance> GetWithReservations(long id, [FromHeader] string  Authorization )
-        {
-             var userMail = AuthLogic.ExtractUserEmailFromToken(Authorization);
-            var user = _context.Users.Where(u=>u.Email == userMail).FirstOrDefault();
-            if(!user.IsAdmin) return Unauthorized();
-             var seance = _context.Seances
-            .Include(s=>s.Movie)
-            .Include(s=>s.Seats)
             .Include(s=>s.Reservations)
-            .Where(s=>s.SeanceId ==id).FirstOrDefault();  //tu jeszcze dojdzie include reservations i include seats
-            if(seance == null) return NotFound();
+            .Where(s=>s.SeanceId ==id).FirstOrDefault();
             return seance;
         }
         //POST: api/seance
