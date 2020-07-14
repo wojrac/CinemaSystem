@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 import { NgForm } from '@angular/forms';
 import { formatCurrency } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-register',
@@ -11,7 +12,7 @@ import { formatCurrency } from '@angular/common';
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor(public service : UserService) { }
+  constructor(public service : UserService, public toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.resetForm()
@@ -33,16 +34,18 @@ export class UserRegisterComponent implements OnInit {
   }
   onSubmit(form:NgForm)
   {
-    console.log("Submit before");
+    //console.log("Submit before");
     this.service.registerUser(form.value).subscribe(
       res => {
         this.resetForm(form);
+        this.toastr.success("User registered", "Succesfull register");
       },
       err => {
-        console.log(err+"My error");
+        //console.log(err+"My error");
+        this.toastr.error("Register is not done", "Unsuccessfull register");
       }
     );
-    console.log("Submit after");
+    //console.log("Submit after");
   }
 
 }

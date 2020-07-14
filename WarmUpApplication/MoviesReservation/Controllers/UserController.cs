@@ -52,8 +52,8 @@ namespace MoviesReservation.Controllers
             var user = _context.Users.Where(user=>user.Email == emailAddress).FirstOrDefault();
             user.Password = null;
         }*/
-        //GET api/user/Login
-        [HttpGet("Login")] 
+        //POST api/user/Login
+        [HttpPost("Login")] 
         public ActionResult<UserWithToken> Login([FromBody] User user)
         {
             user = _context.Users.Where(u=>u.Email == user.Email && u.Password == user.Password).FirstOrDefault();

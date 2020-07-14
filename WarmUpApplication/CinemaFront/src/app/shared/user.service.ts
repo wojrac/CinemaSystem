@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class UserService {
   formData:User;
+  loginData:User;
   readonly rootURL = 'https://localhost:5001/api';
   
 
@@ -15,5 +16,9 @@ export class UserService {
   registerUser(formData:User)
   {
     return this.http.post(this.rootURL+'/user/Register',formData);
+  }
+  loginUser(loginModel)   //return an observer
+  {
+    return this.http.post(this.rootURL+ '/user/Login', loginModel);
   }
 }

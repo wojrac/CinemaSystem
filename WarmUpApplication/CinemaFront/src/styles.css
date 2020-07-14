@@ -3,3 +3,6 @@ div.form-group{
     width: 72%;
     }
 
+#toast-container > div {
+    opacity: 1;
+}

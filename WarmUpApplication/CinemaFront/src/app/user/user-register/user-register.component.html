@@ -1,7 +1,3 @@
-<style>
-
-
-</style>
 
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
     <!--<input type= "hidden" name = "UserId" [value] = "service.formData.UserId"> -->
@@ -21,7 +17,7 @@
         <input type="password" name="ConfirmedPassword" #ConfirmedPassword="ngModel"[(ngModel)]="service.formData.ConfirmedPassword"  class="form-control" placeholder="Confirm Password"required minlength="8" maxlength="30"> 
     </div>
     <div class="form-group">
-        <button class="btn btn-success btn-lg btn-block" type="submit">
+        <button class="btn btn-success btn-lg btn-block" type="submit" [disabled] = "form.invalid">
          Register
         </button>
     </div>
