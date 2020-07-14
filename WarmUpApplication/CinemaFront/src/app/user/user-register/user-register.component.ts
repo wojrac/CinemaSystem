@@ -29,19 +29,20 @@ export class UserRegisterComponent implements OnInit {
       Password:'',
       ConfirmedPassword:''
     
-    };
+    }
   }
   onSubmit(form:NgForm)
   {
-    console.log("Submit");
+    console.log("Submit before");
     this.service.registerUser(form.value).subscribe(
       res => {
         this.resetForm(form);
       },
       err => {
-        console.log(err);
+        console.log(err+"My error");
       }
     );
+    console.log("Submit after");
   }
 
 }

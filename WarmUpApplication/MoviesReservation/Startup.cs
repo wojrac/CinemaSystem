@@ -25,6 +25,7 @@ namespace MoviesReservation
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -72,7 +73,12 @@ namespace MoviesReservation
                 };
             }
             );
-            services.AddCors();
+           // services.AddCors();
+             services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                 builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
         }
 
         private CompatibilityVersion CompatibilityVersion(object version_3_1)
@@ -91,18 +97,25 @@ namespace MoviesReservation
             app.UseHttpsRedirection();
 
             app.UseRouting();
+             app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            
+              app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-             app.UseCors(options => options.WithOrigins("http://localhost:4200")
+          
+           
+          
+          
+            /* app.UseCors(options => options.WithOrigins("http://localhost:4200")
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader());*/
+
+           
+          
         }
     }
 }

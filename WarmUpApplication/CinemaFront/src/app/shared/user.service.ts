@@ -7,13 +7,13 @@ import {HttpClient} from '@angular/common/http'
 })
 export class UserService {
   formData:User;
-  readonly rootURL = "https://localhost:5001/api";
+  readonly rootURL = 'https://localhost:5001/api';
   
 
   constructor(public http:HttpClient) { }
 
   registerUser(formData:User)
   {
-    return this.http.post(this.rootURL+'/user',formData);
+    return this.http.post(this.rootURL+'/user/Register',formData);
   }
 }
