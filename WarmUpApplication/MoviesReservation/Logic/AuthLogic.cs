@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using MoviesReservation.Models;
 
 namespace MoviesReservation.Logic
 {
@@ -13,6 +15,14 @@ namespace MoviesReservation.Logic
             var entoken = new JwtSecurityToken(jwtEncodedString: jwtEncodedString);
             var userMail = entoken.Claims.First(c=>c.Type == "unique_name").Value;
             return userMail;
+        }
+        public static bool IsMailFree( ICollection<User> users,string email)
+        {
+            foreach(var user in users)
+            {
+                if(user.Email == email) return false;
+            }
+            return true;
         }
     }
 }

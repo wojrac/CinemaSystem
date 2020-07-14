@@ -100,7 +100,7 @@ namespace MoviesReservation
                 endpoints.MapControllers();
             });
 
-            app.UseCors(options => options.WithOrigins("http://localhost:4200")
+             app.UseCors(options => options.WithOrigins("http://localhost:4200")
             .AllowAnyMethod()
             .AllowAnyHeader());
         }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using MoviesReservation.Logic;
 using System.Diagnostics;
 
 namespace MoviesReservation.Controllers
@@ -87,10 +88,13 @@ namespace MoviesReservation.Controllers
         }*/
         //POST api/user/Register
         [HttpPost("Register")]
-        public void Register([FromBody] User user)
+        public ActionResult<User> Register([FromBody] User user)
         {
+            var users = _context.Users.ToList();
+            if(!AuthLogic.IsMailFree(users, user.Email)) return BadRequest(new { message = "Username is not free!" });
             _context.Users.Add(user);
             _context.SaveChanges();
+            return user;
         }
 
     }
