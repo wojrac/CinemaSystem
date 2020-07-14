@@ -66,6 +66,7 @@ namespace MoviesReservation.Controllers
             var user = _context.Users.Where(u=>u.Email == userMail).FirstOrDefault();
             reservation.UserId = user.UserId;  //z tokena
             reservation.numberOfSeatsToReserve = reservedEffective;
+            //ReservationLogic.SendEmail(user);
             _context.Reservations.Add(reservation);
             _context.SaveChanges();
             return reservation;

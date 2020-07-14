@@ -2,6 +2,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using MoviesReservation.Models;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace MoviesReservation.Logic
 {
@@ -42,6 +45,26 @@ namespace MoviesReservation.Logic
                 }
             }
            // return seats;
+        }
+        public static void SendEmail(User user)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Cinema", "wojciech.rachwal@stazysta.comarch.com"));
+            message.To.Add(new MailboxAddress(user.Name, user.Email));
+            message.Subject= "Added Reservation";
+            message.Body = new TextPart("plain"){
+                Text = "You added reservation"
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.stazysta.comarch.com", 587);
+                client.Authenticate("wojciech.rachwal@stazysta.comarch.com", "***");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
+
         }
         
         
