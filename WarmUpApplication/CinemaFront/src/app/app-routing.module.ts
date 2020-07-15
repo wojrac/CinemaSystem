@@ -5,6 +5,8 @@ import {MovieComponent} from './movie/movie.component';
 import {UserRegisterComponent} from './user/user-register/user-register.component';
 import {UserLoginComponent} from './user/user-login/user-login.component';
 import {UserComponent} from './user/user.component';
+import {HomeComponent} from './home/home.component';
+import {AuthGuard} from './auth/auth.guard';
 
 
 
@@ -20,7 +22,8 @@ const routes: Routes = [
     ]
   },
 
-  {path:'movie',component:MovieComponent}
+  {path:'movie',component:MovieComponent},
+  {path:'home', component:HomeComponent, canActivate:[AuthGuard]}
 
 ];
 

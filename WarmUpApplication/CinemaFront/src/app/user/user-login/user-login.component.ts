@@ -20,27 +20,18 @@ export class UserLoginComponent implements OnInit {
   constructor(private service : UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    
+    if(localStorage.getItem('token')!=null)
+    this.router.navigateByUrl('/home');
 
-    //this.resetForm();
   }
-  /*resetForm(form?:NgForm)
-  {
-    if(form != null)
-    form.resetForm();
-    //this.service.loginData ={
-      Email:'',
-      Password:'',
-    
-    }
-  }*/
+  
   onSubmit(form:NgForm)
   {
 
     this.service.loginUser(form.value).subscribe(
       (res:any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/movie');
+        this.router.navigateByUrl('/home');
       },
       err => {
         if(err.status == 400)

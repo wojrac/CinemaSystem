@@ -6,3 +6,6 @@ div.form-group{
 #toast-container > div {
     opacity: 1;
 }
+div.tab-header{
+    cursor: pointer;
+}
