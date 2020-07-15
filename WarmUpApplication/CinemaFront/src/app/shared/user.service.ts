@@ -21,4 +21,8 @@ export class UserService {
   {
     return this.http.post(this.rootURL+ '/user/Login', loginModel);
   }
+  getUserProfile()
+  {
+    return this.http.get(this.rootURL+'/userProfile');
+  }
 }

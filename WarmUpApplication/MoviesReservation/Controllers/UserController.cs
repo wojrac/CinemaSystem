@@ -27,11 +27,7 @@ namespace MoviesReservation.Controllers
             _context = context;
             _jwtsettings = jwtsettings.Value;
         }
-        [HttpGet]
-        public void Index()
-        {
-
-        }
+        
         //GET : api/user
         /*[HttpGet]
         public ActionResult<IEnumerable<User>> GetUsers()

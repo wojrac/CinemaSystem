@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
@@ -13,7 +13,9 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import {UserService} from './shared/user.service';
 import { MovieComponent } from './movie/movie.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import {AuthInterceptor} from './auth/auth.interceptor';
+import { ProfileComponent } from './home/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HomeComponent } from './home/home.component'
     UserLoginComponent,
     UserRegisterComponent,
     MovieComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,12 @@ import { HomeComponent } from './home/home.component'
     ToastrModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService
+    ,{
+    provide: HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
