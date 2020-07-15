@@ -9,6 +9,7 @@ import { UserService } from '../shared/user.service';
 })
 export class HomeComponent implements OnInit {
   userDetails;
+  isAdmin;
 
   constructor(private router: Router, private service: UserService) { }
 
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
     this.service.getUserProfile().subscribe(
       res=>{
         this.userDetails = res;
+        this.isAdmin = this.userDetails.isAdmin;
       },
       err=>{}
    );
@@ -29,6 +31,14 @@ export class HomeComponent implements OnInit {
   seeProfile()
   {
     this.router.navigateByUrl('/profile');
+  }
+  goToAddForm()
+  {
+    this.router.navigateByUrl('/movie');
+  }
+  showMovies()
+  {
+    this.router.navigateByUrl('/movielist')
   }
 
 }

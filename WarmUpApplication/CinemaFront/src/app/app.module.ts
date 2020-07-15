@@ -12,10 +12,14 @@ import { UserComponent } from './user/user.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import {UserService} from './shared/user.service';
-import { MovieComponent } from './movie/movie.component';
+import { MovieComponent } from './home/movie/movie.component';
 import { HomeComponent } from './home/home.component';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import { ProfileComponent } from './home/profile/profile.component';
+import { SeanceComponent } from './home/seance/seance.component';
+import {MovieService} from './shared/movie.service';
+import { MovielistComponent } from './home/movielist/movielist.component'
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { ProfileComponent } from './home/profile/profile.component';
     UserRegisterComponent,
     MovieComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    SeanceComponent,
+    MovielistComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,7 @@ import { ProfileComponent } from './home/profile/profile.component';
     ToastrModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [UserService
+  providers: [UserService,MovieService
     ,{
     provide: HTTP_INTERCEPTORS,
     useClass:AuthInterceptor,
