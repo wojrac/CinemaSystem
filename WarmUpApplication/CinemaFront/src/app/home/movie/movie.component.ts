@@ -31,10 +31,7 @@ export class MovieComponent implements OnInit {
   }
   onSubmit(form: NgForm)
  { 
-   if(this.service.movieData.MovieId == 0)
    this.insert(form);
-  
-   //this.update(form);
  }
 
  insert(form:NgForm)
@@ -50,23 +47,7 @@ export class MovieComponent implements OnInit {
     }
   )
  }
-  /*update(form: NgForm)
-  {
-   
-    //console.log(this.movie);
-    this.service.updateMovie(form.value).subscribe(
-      res=>{
-        this.resetForm(form);
-        console.log("update");
-        
-        //this.service.movieData= this.movie;
-        this.toastr.success("Movie updated", "Succesfull update");
-        this.router.navigateByUrl('/home');
-      },
-      err=>{
-      }
-    )
-  }*/
+ 
  
  
 

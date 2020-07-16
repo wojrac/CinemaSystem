@@ -11,6 +11,7 @@ import {AuthGuard} from './auth/auth.guard';
 import {MovielistComponent} from './home/movielist/movielist.component';
 import {MovieupdateComponent} from './home/movieupdate/movieupdate.component';
 import {MoviedetailsComponent} from './home/moviedetails/moviedetails.component';
+import {SeanceComponent} from './home/seance/seance.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
   {path:'movielist',component:MovielistComponent, canActivate:[AuthGuard]},
   {path:'movieupdate',component:MovieupdateComponent, canActivate:[AuthGuard]},
-  {path:'moviedetails',component:MoviedetailsComponent, canActivate:[AuthGuard]}
+  {path:'moviedetails',component:MoviedetailsComponent, canActivate:[AuthGuard]},
+  {path:'seance',component:SeanceComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

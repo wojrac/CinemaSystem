@@ -20,7 +20,9 @@ import { SeanceComponent } from './home/seance/seance.component';
 import {MovieService} from './shared/movie.service';
 import { MovielistComponent } from './home/movielist/movielist.component';
 import { MovieupdateComponent } from './home/movieupdate/movieupdate.component';
-import { MoviedetailsComponent } from './home/moviedetails/moviedetails.component'
+import { MoviedetailsComponent } from './home/moviedetails/moviedetails.component';
+import {SeanceService} from './shared/seance.service';
+
 
 
 @NgModule({
@@ -45,7 +47,7 @@ import { MoviedetailsComponent } from './home/moviedetails/moviedetails.componen
     ToastrModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [UserService,MovieService
+  providers: [UserService,MovieService,SeanceService
     ,{
     provide: HTTP_INTERCEPTORS,
     useClass:AuthInterceptor,

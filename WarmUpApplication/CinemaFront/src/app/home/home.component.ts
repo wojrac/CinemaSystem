@@ -38,7 +38,11 @@ export class HomeComponent implements OnInit {
   }
   showMovies()
   {
-    this.router.navigateByUrl('/movielist')
+    this.router.navigateByUrl('/movielist');
+  }
+  goToAddSeanceForm()
+  {
+    this.router.navigateByUrl('/seance');
   }
 
 }
