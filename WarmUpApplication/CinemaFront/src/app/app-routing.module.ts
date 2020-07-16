@@ -8,7 +8,9 @@ import {UserComponent} from './user/user.component';
 import {HomeComponent} from './home/home.component';
 import {ProfileComponent} from './home/profile/profile.component'
 import {AuthGuard} from './auth/auth.guard';
-import {MovielistComponent} from './home/movielist/movielist.component'
+import {MovielistComponent} from './home/movielist/movielist.component';
+import {MovieupdateComponent} from './home/movieupdate/movieupdate.component';
+import {MoviedetailsComponent} from './home/moviedetails/moviedetails.component';
 
 
 const routes: Routes = [
@@ -27,7 +29,8 @@ const routes: Routes = [
   {path:'home', component:HomeComponent, canActivate:[AuthGuard]},
   {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
   {path:'movielist',component:MovielistComponent, canActivate:[AuthGuard]},
-
+  {path:'movieupdate',component:MovieupdateComponent, canActivate:[AuthGuard]},
+  {path:'moviedetails',component:MoviedetailsComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

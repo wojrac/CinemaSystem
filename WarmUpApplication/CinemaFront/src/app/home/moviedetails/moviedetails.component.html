@@ -1,0 +1,8 @@
+<div class="card m-5" style="width:18rem" *ngIf = "movie" >
+    <ul class="list-group">
+      <li class="list-group-item"><strong>{{movie.title}}</strong></li>
+      <li class="list-group-item">Duration: {{movie.durationInHours}}</li>
+      <li class="list-group-item">{{movie.imageFile}}</li>
+      <button class ="btn btn-secondary btn-lg btn-block" (click) = back()>Back</button>
+    </ul>
+  </div>

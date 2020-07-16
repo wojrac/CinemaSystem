@@ -1,7 +1,12 @@
 <div class="card m-5" style="width:18rem" *ngFor="let movie of movies">
     <ul class="list-group">
-      <li class="list-group-item"><strong>Title : </strong>{{movie.title}}</li>
-      <li class="list-group-item"><strong>Duration : </strong>{{movie.durationInHours}}</li>
-      <li class="list-group-item"><strong>Image : </strong>{{movie.imageFile}}</li>
+      <li class="list-group-item"><strong>{{movie.title}}</strong></li>
+      <button class ="btn btn-primary btn-lg btn-block" (click) = goUpdate(movie.movieId)>Update</button>
+      <button class ="btn btn-danger btn-lg btn-block" (click) = onDelete(movie.movieId)>Delete</button>
+      <button class ="btn btn-secondary btn-lg btn-block" (click) = details(movie.movieId)>Details</button>
+      
     </ul>
+  </div>
+  <div>
+    <button class ="btn btn-warning btn-lg btn-block" (click) = back()>Back</button>
   </div>

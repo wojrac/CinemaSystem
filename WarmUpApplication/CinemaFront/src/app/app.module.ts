@@ -18,7 +18,9 @@ import {AuthInterceptor} from './auth/auth.interceptor';
 import { ProfileComponent } from './home/profile/profile.component';
 import { SeanceComponent } from './home/seance/seance.component';
 import {MovieService} from './shared/movie.service';
-import { MovielistComponent } from './home/movielist/movielist.component'
+import { MovielistComponent } from './home/movielist/movielist.component';
+import { MovieupdateComponent } from './home/movieupdate/movieupdate.component';
+import { MoviedetailsComponent } from './home/moviedetails/moviedetails.component'
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { MovielistComponent } from './home/movielist/movielist.component'
     HomeComponent,
     ProfileComponent,
     SeanceComponent,
-    MovielistComponent
+    MovielistComponent,
+    MovieupdateComponent,
+    MoviedetailsComponent
   ],
   imports: [
     BrowserModule,

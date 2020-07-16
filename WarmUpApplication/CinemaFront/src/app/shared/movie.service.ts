@@ -19,5 +19,17 @@ addMovie(movieData:Movie)
 {
    return this.http.post(this.rootURL + '/movie', movieData);
 }
+updateMovie(movieData:Movie, movieId)
+{
+  return this.http.put(this.rootURL+ '/movie/'+movieId, movieData);
+}
+getMovie(id)
+{
+  return this.http.get(this.rootURL+ '/movie/' + id );
+}
+deleteMovie(id)
+{
+  return this.http.delete(this.rootURL + '/movie/'+ id);
+}
 
 }

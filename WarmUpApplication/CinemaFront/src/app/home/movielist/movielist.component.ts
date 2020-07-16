@@ -10,12 +10,15 @@ import { MovieService } from 'src/app/shared/movie.service';
 export class MovielistComponent implements OnInit {
   movies;
 
+
   constructor(private router:Router, private service : MovieService ) { }
 
   ngOnInit(): void {
     this.service.getAllMovies().subscribe(
       res=>{
+        
         this.movies = res;
+       // console.log(this.movies);
       },
       err=>
       {
@@ -23,5 +26,40 @@ export class MovielistComponent implements OnInit {
       }
     )
   }
+  /*resetForm()
+  {
+    this.service.movieData ={
+      MovieId :0,
+      Title :'',
+      DurationInHours:0,
+      ImageFile:''
+    
+    }
+  }*/
+  back()
+  {
+    this.router.navigateByUrl('/home');
+  }
+  goUpdate(movieId)
+  {
+    this.router.navigate(['/movieupdate'], {state:{idOfMovie: movieId}});
+
+  }
+  details(movieId)
+  {
+    this.router.navigate(['/moviedetails'], {state:{idOfMovie:movieId}});
+  }
+  onDelete(movieId)
+  {
+    this.service.deleteMovie(movieId).subscribe(
+      res=>{
+        window.location.reload();
+      },
+      err=>{
+
+      }
+    )
+  }
+  
 
 }
