@@ -49,6 +49,11 @@ export class MovielistComponent implements OnInit {
   {
     this.router.navigate(['/moviedetails'], {state:{idOfMovie:movieId}});
   }
+  select(movieId)
+  {
+    //console.log(movieId); tu jest ok
+    this.router.navigate(['/seance'], {state:{idOfMovie:movieId}})
+  }
   onDelete(movieId)
   {
     this.service.deleteMovie(movieId).subscribe(

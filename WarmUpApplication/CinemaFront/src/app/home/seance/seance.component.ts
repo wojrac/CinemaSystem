@@ -10,8 +10,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./seance.component.css']
 })
 export class SeanceComponent implements OnInit {
+  movieId 
 
-  constructor(public service: SeanceService, private router: Router,public toastr: ToastrService) { }
+
+  constructor(public service: SeanceService, private router: Router,public toastr: ToastrService) { 
+    //tu jest za wczesnie
+  }
 
   ngOnInit(): void {
     this.resetForm();
@@ -33,7 +37,25 @@ export class SeanceComponent implements OnInit {
   }
   onSubmit(form:NgForm)
   {
-
+    //a tu za pozno :/
+    this.movieId =this.router.getCurrentNavigation().extras.state.idOfMovie;
+    form.value.MovieId = this.movieId;
+    this.service.addSeance(form.value).subscribe(
+      res=>{
+        
+        this.resetForm(form);
+        this.toastr.success("Seance added", "Succesfull adding");
+        this.router.navigateByUrl('/home');
+      },
+      err=>{
+        console.log();
+        this.toastr.error(err.error.message, "Unsuccessfull create");
+      }
+    )
+  }
+  goToSelect()
+  {
+    this.router.navigateByUrl('/movielist');
   }
 
 }
