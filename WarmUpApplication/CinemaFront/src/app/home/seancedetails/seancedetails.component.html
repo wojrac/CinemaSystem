@@ -8,7 +8,7 @@
         <li class="list-group-item"><strong>number: {{seat.seatNumber}}</strong></li>
         <li class="list-group-item"><strong>Is reserved: {{seat.isReserved}}</strong></li>
         <div *ngIf = "!seat.isReserved">
-            <button class ="btn btn-success btn-lg btn-block" (click) = reserve(seanceId,seance.seatNumber)>Make a Reservation</button>
+            <button class ="btn btn-success btn-lg btn-block" (click) = reserve(seanceId,seat.seatNumber,seat.seatId)>Make a Reservation</button>
         </div>
         <div *ngIf = "seat.isReserved">
             Reserved

@@ -48,5 +48,9 @@ export class HomeComponent implements OnInit {
   {
     this.router.navigateByUrl('/seancelist');
   }
+  showReservations()
+  {
+    this.router.navigateByUrl('/reservationlist');
+  }
 
 }

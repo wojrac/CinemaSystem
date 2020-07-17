@@ -25,7 +25,8 @@ import {SeanceService} from './shared/seance.service';
 import { SeancelistComponent } from './home/seancelist/seancelist.component';
 import { SeanceupdateComponent } from './home/seanceupdate/seanceupdate.component';
 import { SeancedetailsComponent } from './home/seancedetails/seancedetails.component';
-
+import {ReservationService} from './shared/reservation.service';
+import { ReservationlistComponent } from './home/reservationlist/reservationlist.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SeancedetailsComponent } from './home/seancedetails/seancedetails.compo
     MoviedetailsComponent,
     SeancelistComponent,
     SeanceupdateComponent,
-    SeancedetailsComponent
+    SeancedetailsComponent,
+    ReservationlistComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import { SeancedetailsComponent } from './home/seancedetails/seancedetails.compo
     ToastrModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [UserService,MovieService,SeanceService
+  providers: [UserService,MovieService,SeanceService,ReservationService
     ,{
     provide: HTTP_INTERCEPTORS,
     useClass:AuthInterceptor,

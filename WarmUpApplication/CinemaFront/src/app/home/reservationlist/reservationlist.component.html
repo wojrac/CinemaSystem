@@ -1,0 +1,16 @@
+<div class="card m-5" style="width:18rem" *ngFor="let reservation of reservations">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>ID of seance: {{reservation.seanceId}}</strong></li>
+      <li class="list-group-item"><strong>number of Seat: {{reservation.numberOfSeatsToReserve}}</strong></li>
+      <li class="list-group-item"><strong>Name: {{userProfile.name}}</strong></li>
+      <li class="list-group-item"><strong>LastName: {{userProfile.lastName}}</strong></li>
+      <li class="list-group-item"><strong>Title: </strong></li>
+      <button class ="btn btn-danger btn-lg btn-block" (click) = onDelete(reservation.reservationId)>Delete</button>
+     <!-- <button class ="btn btn-secondary btn-lg btn-block" (click) = details(seance.seanceId)>Details</button>
+     -->
+      
+    </ul>
+  </div>
+  <div>
+    <button class ="btn btn-warning btn-lg btn-block" (click) = back()>Back</button>
+  </div>
