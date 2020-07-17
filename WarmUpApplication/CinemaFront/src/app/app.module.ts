@@ -22,6 +22,9 @@ import { MovielistComponent } from './home/movielist/movielist.component';
 import { MovieupdateComponent } from './home/movieupdate/movieupdate.component';
 import { MoviedetailsComponent } from './home/moviedetails/moviedetails.component';
 import {SeanceService} from './shared/seance.service';
+import { SeancelistComponent } from './home/seancelist/seancelist.component';
+import { SeanceupdateComponent } from './home/seanceupdate/seanceupdate.component';
+import { SeancedetailsComponent } from './home/seancedetails/seancedetails.component';
 
 
 
@@ -37,7 +40,10 @@ import {SeanceService} from './shared/seance.service';
     SeanceComponent,
     MovielistComponent,
     MovieupdateComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
+    SeancelistComponent,
+    SeanceupdateComponent,
+    SeancedetailsComponent
   ],
   imports: [
     BrowserModule,

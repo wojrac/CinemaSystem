@@ -1,0 +1,21 @@
+<div class="card m-5" style="width:18rem" *ngIf = "seance" >
+    <ul class="list-group">
+      <li class="list-group-item"><strong>{{seance.movie.title}}</strong></li>
+      <li class="list-group-item">Start: {{seance.startOfSeance}}</li>
+      <li class="list-group-item">End:{{seance.endOfSeance}}</li>
+      <li class="list-group-item">Prize:{{seance.prize}}</li>
+      <div class="card m-5" style="width:18rem" *ngFor="let seat of seance.seats">
+        <li class="list-group-item"><strong>number: {{seat.seatNumber}}</strong></li>
+        <li class="list-group-item"><strong>Is reserved: {{seat.isReserved}}</strong></li>
+        <div *ngIf = "!seat.isReserved">
+            <button class ="btn btn-success btn-lg btn-block" (click) = reserve(seanceId,seance.seatNumber)>Make a Reservation</button>
+        </div>
+        <div *ngIf = "seat.isReserved">
+            Reserved
+        </div>
+        
+    </div>
+
+      <button class ="btn btn-secondary btn-lg btn-block" (click) = back()>Back</button>
+    </ul>
+  </div>

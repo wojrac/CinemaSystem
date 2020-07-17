@@ -5,18 +5,15 @@ import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-seance',
-  templateUrl: './seance.component.html',
-  styleUrls: ['./seance.component.css']
+  selector: 'app-seanceupdate',
+  templateUrl: './seanceupdate.component.html',
+  styleUrls: ['./seanceupdate.component.css']
 })
-export class SeanceComponent implements OnInit {
-  movieId 
-
-
-  constructor(public service: SeanceService, private router: Router,public toastr: ToastrService) { 
-    //tu jest za wczesnie
-    //this.movieId =this.router.getCurrentNavigation().extras.state.idOfMovie;
-  }
+export class SeanceupdateComponent implements OnInit {
+seanceId;
+  constructor(public service: SeanceService, private router: Router,public toastr: ToastrService) {
+    this.seanceId =this.router.getCurrentNavigation().extras.state.idOfSeance;
+   }
 
   ngOnInit(): void {
     this.resetForm();
@@ -24,7 +21,7 @@ export class SeanceComponent implements OnInit {
   resetForm(form?:NgForm)
   {
     if(form != null)
-    form.form.reset();
+    form.resetForm();
     this.service.seanceData ={
       SeanceId:0,
       MovieId :0,
@@ -40,13 +37,13 @@ export class SeanceComponent implements OnInit {
   onSubmit(form:NgForm)
   {
     //a tu za pozno :/
-   // this.movieId =this.router.getCurrentNavigation().extras.state.idOfMovie;
-    //form.value.MovieId = this.movieId;
-    this.service.addSeance(form.value).subscribe(
+     
+    // form.value.SeanceId = this.seanceId;
+    this.service.updateSeance(form.value, this.seanceId).subscribe(
       res=>{
         
         this.resetForm(form);
-        this.toastr.success("Seance added", "Succesfull adding");
+        this.toastr.success("Seance updated", "Succesfull updating");
         this.router.navigateByUrl('/home');
       },
       err=>{

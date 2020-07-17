@@ -12,7 +12,9 @@ import {MovielistComponent} from './home/movielist/movielist.component';
 import {MovieupdateComponent} from './home/movieupdate/movieupdate.component';
 import {MoviedetailsComponent} from './home/moviedetails/moviedetails.component';
 import {SeanceComponent} from './home/seance/seance.component';
-
+import {SeancelistComponent} from './home/seancelist/seancelist.component';
+import {SeanceupdateComponent} from './home/seanceupdate/seanceupdate.component';
+import {SeancedetailsComponent} from './home/seancedetails/seancedetails.component';
 
 const routes: Routes = [
 
@@ -32,7 +34,10 @@ const routes: Routes = [
   {path:'movielist',component:MovielistComponent, canActivate:[AuthGuard]},
   {path:'movieupdate',component:MovieupdateComponent, canActivate:[AuthGuard]},
   {path:'moviedetails',component:MoviedetailsComponent, canActivate:[AuthGuard]},
-  {path:'seance',component:SeanceComponent, canActivate:[AuthGuard]}
+  {path:'seance',component:SeanceComponent, canActivate:[AuthGuard]},
+  {path:'seancelist', component:SeancelistComponent, canActivate:[AuthGuard]},
+  {path:'seanceupdate', component:SeanceupdateComponent, canActivate:[AuthGuard]},
+  {path:'seancedetails', component:SeancedetailsComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

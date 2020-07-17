@@ -35,6 +35,14 @@ namespace MoviesReservation.Controllers
             DateTime dateTime = DateTime.Parse(date);
            return  _context.Seances.Where(s=>s.StartOfSeance.Date == dateTime.Date).ToList();
         }
+        //GET: api/seance/all
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<Seance>> GetAllSeances()
+        {
+            return _context.Seances
+            .Include(s=>s.Movie).ToList();
+        }
+        
         //GET: api/seance/1
         [HttpGet("{id}")]
         public ActionResult<Seance> Get(long id, [FromHeader] string  Authorization)

@@ -1,6 +1,6 @@
 <div class="card m-5" style="width:18rem" *ngFor="let movie of movies">
     <ul class="list-group">
-      <li class="list-group-item"><strong>{{movie.title}}</strong></li>
+      <li class="list-group-item"><strong>{{movie.title}}  ID: {{movie.movieId}}</strong></li>
       <button class ="btn btn-primary btn-lg btn-block" (click) = goUpdate(movie.movieId)>Update</button>
       <button class ="btn btn-danger btn-lg btn-block" (click) = onDelete(movie.movieId)>Delete</button>
       <button class ="btn btn-secondary btn-lg btn-block" (click) = details(movie.movieId)>Details</button>

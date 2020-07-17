@@ -1,0 +1,18 @@
+<div class="card m-5" style="width:18rem" *ngFor="let seance of seances">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Title: {{seance.movie.title}}</strong></li>
+      <li class="list-group-item"><strong>Start: {{seance.startOfSeance}}</strong></li>
+        
+     
+      <div *ngIf = 'isAdmin'>
+        <button class ="btn btn-primary btn-lg btn-block" (click) = goUpdate(seance.seanceId)>Update</button>
+      <button class ="btn btn-danger btn-lg btn-block" (click) = onDelete(seance.seanceId)>Delete</button>
+      </div>
+      <button class ="btn btn-secondary btn-lg btn-block" (click) = details(seance.seanceId)>Details</button>
+     <!-- <button class ="btn btn-success btn-lg btn-block" (click) = select(movie.movieId)>Select</button> -->
+      
+    </ul>
+  </div>
+  <div>
+    <button class ="btn btn-warning btn-lg btn-block" (click) = back()>Back</button>
+  </div>
